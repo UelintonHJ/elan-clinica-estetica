@@ -22,7 +22,7 @@ export function SectionHeading({
                 </span>
             )}
 
-            <h2 className="mt-4 font-serif text-[clamp(2.25rem,4vw,4rem)] leading-[1] tracking-[-0.025em]">
+            <h2 className="mt-4 font-serif text-[clamp(2.25rem,4vw,4rem)] leading-none tracking-tight">
                 {title}
             </h2>
 

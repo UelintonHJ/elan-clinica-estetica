@@ -58,7 +58,7 @@ export function Benefits() {
                                 key={benefit.number}
                                 className="group relative overflow-hidden bg-(--background) p-7 transition-[background-color] duration-500 hover:bg-(--surface) sm:p-10"
                             >
-                                <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-(--accent) transition-transform duration-500 ease-(--ease-out) group-hover:scale-x-100" />
+                                <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-(--accent) transition-transform duration-500 ease-out group-hover:scale-x-100" />
                                 <div className="flex items-start justify-between">
                                     <span className="text-xs font-medium tracking-[0.2em] text-black/35">
                                         {benefit.number}
@@ -71,7 +71,7 @@ export function Benefits() {
                                     />
                                 </div>
 
-                                <h3 className="mt-16 font-serif text-2xl sm:text-3xl">
+                                <h3 className="mt-16 font-serif text-2xl leading-[1.1] tracking-wider sm:text-3xl">
                                     {benefit.title}
                                 </h3>
 

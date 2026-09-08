@@ -71,20 +71,20 @@ export function Hero() {
                     </div>
 
                     <div className="relative">
-                        <div className="group relative aspect-4/5 overflow-hidden rounded-(--radius-xl) shadow-(--shadow-image)">
+                        <div className="group relative aspect-4/5 overflow-hidden rounded-xl shadow-(--shadow-image)">
                             <Image
                                 src="/images/hero-clinic.jpg"
                                 alt="Ambiente elegante de uma clínica de estética"
                                 fill
                                 priority
                                 sizes="(max-width: 1024px) 100vw, 55vw"
-                                className="object-cover transition-transform duration-700 ease-(--ease-out) group-hover:scale-[1.025]"
+                                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
                             />
 
-                            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+                            <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/10 via-transparent to-transparent" />
                         </div>
 
-                        <div className="absolute -bottom-6 -left-5 hidden max-w-60 rounded-(--radius-lg) border border-white/60 bg-white/80 p-5 shadow-(--shadow-soft) backdrop-blur-md sm:block">
+                        <div className="absolute -bottom-6 -left-5 hidden max-w-60 rounded-lg border border-white/60 bg-white/80 p-5 shadow-(--shadow-soft) backdrop-blur-md sm:block">
                             <p className="font-serif text-lg leading-tight">
                                 Cuidado começa com escuta.
                             </p>
