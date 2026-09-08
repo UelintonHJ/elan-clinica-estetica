@@ -11,23 +11,23 @@ export function SectionHeading({
     description,
     align = "left",
 }: SectionHeadingProps) {
-    const alignment = 
-        align === "center"
-            ? "mx-auto text-center"
-            : "text-left";
+    const centered =
+        align === "center";
 
     return (
-        <div className={`max-w-2xl ${alignment}`}>
-            <span className="mb-4 block text-xs font-medium uppercase tracking-[0.25em] text-(--accent-dark)">
-                {eyebrow}
-            </span>
+        <div className={`max-w-2xl ${centered ? "mx-auto text-center" : ""}`}>
+            {eyebrow && (
+                <span className="text-[11px] font-medium uppercase tracking-[0.28em] text-(--accent-dark)">
+                    {eyebrow}
+                </span>
+            )}
 
-            <h2 className="font-serif text-4xl leading-[1.05] tracking-tight text-(--foreground) sm:text-5xl lg:text-6xl">
+            <h2 className="mt-4 font-serif text-[clamp(2.25rem,4vw,4rem)] leading-[1] tracking-[-0.025em]">
                 {title}
             </h2>
 
             {description && (
-                <p className="mt-6 max-w-xl text-base leading-7 text-(--muted) sm:text-lg">
+                <p className="mt-5 max-w-xl text-base leading-7 text-(--muted) sm:text-lg sm:leading-8">
                     {description}
                 </p>
             )}

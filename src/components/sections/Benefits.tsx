@@ -58,8 +58,9 @@ export function Benefits() {
                         return (
                             <article
                                 key={benefit.number}
-                                className="group bg-[#f7f5f1] p-8 transition-transform duration-500 hover:-translate-y-1 sm:p-10"
+                                className="group relative overflow-hidden bg-(--background) p-7 transition-[background-color] duration-500 hover:bg-(--surface) sm:p-10"
                             >
+                                <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-(--accent) transition-transform duration-500 ease-(--ease-out) group-hover:scale-x-100" />
                                 <div className="flex items-start justify-between">
                                     <span className="text-xs font-medium tracking-[0.2em] text-black/35">
                                         {benefit.number}

@@ -5,7 +5,6 @@ import { useState } from "react";
 
 import { siteConfig } from "@/config/site";
 import { Container } from "../ui/Container";
-import { div } from "motion/react-client";
 
 export function Header() {
     const [open, setOpen] = useState(false);
@@ -19,7 +18,8 @@ export function Header() {
                             <a
                                 key={item.href}
                                 href={item.href}
-                                className="text-sm text-black/65 transition-colors hover:text-black"
+                                className="relative text-sm text-black/65 transition-colors hover:text-(--foreground)
+                                    after:absolute after:-bottom-2 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-(--accent) after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
                             >
                                 {item.label}
                             </a>
@@ -34,16 +34,18 @@ export function Header() {
                     </a>
 
                     <nav className="hidden items-center gap-8 md:flex">
-                        <a 
+                        <a
                             href="#faq"
-                            className="text-sm text-black/65 transition-colors hover:text-black"
+                            className="relative text-sm text-black/65 transition-colors hover:text-(--foreground)
+                                after:absolute after:-bottom-2 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-(--accent) after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
                         >
                             FAQ
                         </a>
 
-                        <a 
+                        <a
                             href="#contato"
-                            className="text-sm font-medium text-black"
+                            className="relative text-sm text-black/65 transition-colors hover:text-(--foreground)
+                                after:absolute after:-bottom-2 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-(--accent) after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
                         >
                             WhatsApp
                         </a>
@@ -64,7 +66,7 @@ export function Header() {
                     <div className="border-t border-black/10 py-6 md:hidden">
                         <nav className="flex flex-col gap-5">
                             {siteConfig.navigation.map((item) => (
-                                <a 
+                                <a
                                     key={item.href}
                                     href={item.href}
                                     onClick={() => setOpen(false)}
@@ -74,7 +76,7 @@ export function Header() {
                                 </a>
                             ))}
 
-                            <a 
+                            <a
                                 href="#contato"
                                 onClick={() => setOpen(false)}
                                 className="font-medium"
