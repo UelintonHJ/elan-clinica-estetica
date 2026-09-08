@@ -1,4 +1,3 @@
-import { section } from "motion/react-client";
 import { Container } from "../ui/Container";
 import { createWhatsAppUrl } from "@/lib/whatsapp";
 

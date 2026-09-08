@@ -2,7 +2,6 @@ import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Button } from "../ui/Button";
 import { createWhatsAppUrl } from "@/lib/whatsapp";
-import { title } from "process";
 
 const steps = [
     {

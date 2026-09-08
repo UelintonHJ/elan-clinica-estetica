@@ -1,6 +1,5 @@
 import {
     Heart,
-    icons,
     Leaf,
     MessageCircle,
     ShieldCheck,
@@ -8,7 +7,6 @@ import {
 
 import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
-import { title } from "process";
 
 const benefits = [
     {

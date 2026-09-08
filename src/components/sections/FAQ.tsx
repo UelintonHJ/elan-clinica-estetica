@@ -5,7 +5,6 @@ import { useState } from "react";
 
 import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
-import { div } from "motion/react-client";
 
 const faqs = [
     {

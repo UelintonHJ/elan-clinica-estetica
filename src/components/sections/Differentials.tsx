@@ -2,7 +2,6 @@ import Image from "next/image";
 
 import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
-import { title } from "process";
 
 const differentials = [
     {

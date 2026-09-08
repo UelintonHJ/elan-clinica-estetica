@@ -15,7 +15,7 @@ export function Testimonials() {
                 <div className="mt-16 grid gap-6 md:grid-cols-2">
                     <article className="rounded-4xl border border-black/10 bg-white/50 p-8 sm:p-10">
                         <p className="font-serif text-2xl leading-relaxed">
-                            "Depoimento real do cliente será inserido aqui."
+                            &ldquo;Depoimento real do cliente será inserido aqui.&rdquo;
                         </p>
 
                         <p className="mt-8 text-sm text-black/50">
@@ -25,7 +25,7 @@ export function Testimonials() {
 
                     <article className="rounded-4xl border border-black/10 bg-white/50 p-8 sm:p-10">
                         <p className="font-serif text-2xl leading-relaxed">
-                            "Outro depoimento real poderá ser inserido aqui."
+                            &ldquo;Outro depoimento real poderá ser inserido aqui.&rdquo;
                         </p>
 
                         <p className="mt-8 text-sm text-black/50">
