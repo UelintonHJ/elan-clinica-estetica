@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
 import { createWhatsAppUrl } from "@/lib/whatsapp";
@@ -25,13 +24,13 @@ export function Hero() {
                             Cuidado estético com elegância
                         </span>
 
-                        <Reveal>
+                        <Reveal delay={0.06} distance={24}>
                             <h1 className="max-w-2xl font-serif text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.96] tracking-[-0.035em]">
                                 Realce sua beleza com cuidado, precisão e naturalidade.
                             </h1>
                         </Reveal>
 
-                        <Reveal delay={0.08}>
+                        <Reveal delay={0.12} distance={20}>
                             <p className="mt-7 max-w-lg text-base leading-7 text-(--muted) sm:text-lg sm:leading-8">
                                 Tratamentos estéticos personalizados para quem busca
                                 cuidar da aparência com uma abordagem individualizada
@@ -39,62 +38,80 @@ export function Hero() {
                             </p>
                         </Reveal>
 
-                        <p className="mt-4 max-w-lg text-sm leading-6 text-(--muted-light)">
-                            Cada pessoa tem necessidades, características e
-                            objetivos diferentes. Por isso, o primeiro passo é
-                            entender você e orientar sobre as possibilidades mais
-                            adequadas.
-                        </p>
+                        <Reveal delay={0.18} distance={18}>
+                            <p className="mt-4 max-w-lg text-sm leading-6 text-(--muted-light)">
+                                Cada pessoa tem necessidades, características e
+                                objetivos diferentes. Por isso, o primeiro passo é
+                                entender você e orientar sobre as possibilidades mais
+                                adequadas.
+                            </p>
+                        </Reveal>
 
-                        <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-                            <Button
-                                href={whatsappUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                Conversar no WhatsApp
-                                <ArrowUpRight size={17} className="ml-2 transition-transform duration-300 group-hover:-translate-y-0.5" />
-                            </Button>
+                        <Reveal delay={0.24} distance={16}>
+                            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+                                <Button
+                                    href={whatsappUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Conversar no WhatsApp
+                                    <ArrowUpRight size={17} className="ml-2 transition-transform duration-300 group-hover:-translate-y-0.5" />
+                                </Button>
 
-                            <Button
-                                href="#clinica"
-                                variant="secondary"
-                            >
-                                Conhecer a clínica
-                            </Button>
-                        </div>
+                                <Button
+                                    href="#clinica"
+                                    variant="secondary"
+                                >
+                                    Conhecer a clínica
+                                </Button>
+                            </div>
+                        </Reveal>
 
-                        <div className="mt-7 flex items-center gap-3 text-xs text-(--muted-light)">
-                            <span className="h-px w-8 bg-(--border-strong)" />
-                            Atendimento personalizado · Porto Alegre
-                        </div>
+                        <Reveal delay={0.3} distance={12}>
+                            <div className="mt-7 flex items-center gap-3 text-xs text-(--muted-light)">
+                                <span className="h-px w-8 bg-(--border-strong)" />
+                                Atendimento personalizado · Porto Alegre
+                            </div>
+                        </Reveal>
                     </div>
 
-                    <div className="relative">
-                        <div className="group relative aspect-4/5 overflow-hidden rounded-xl shadow-(--shadow-image)">
-                            <Image
-                                src="/images/hero-clinic.jpg"
-                                alt="Ambiente elegante de uma clínica de estética"
-                                fill
-                                priority
-                                sizes="(max-width: 1024px) 100vw, 55vw"
-                                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
-                            />
+                    <Reveal
+                        delay={0.16}
+                        distance={28}
+                        duration={0.9}
+                    >
+                        <div className="relative">
+                            <div className="group relative aspect-4/5 overflow-hidden rounded-xl shadow-(--shadow-image)">
+                                <Image
+                                    src="/images/hero-clinic.jpg"
+                                    alt="Ambiente elegante de uma clínica de estética"
+                                    fill
+                                    priority
+                                    sizes="(max-width: 1024px) 100vw, 55vw"
+                                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+                                />
 
-                            <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/10 via-transparent to-transparent" />
+                                <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/10 via-transparent to-transparent" />
+                            </div>
+
+                            <Reveal
+                                delay={0.5}
+                                distance={10}
+                                duration={0.6}
+                            >
+                                <div className="absolute -bottom-6 -left-5 hidden max-w-60 rounded-lg border border-white/60 bg-white/80 p-5 shadow-(--shadow-soft) backdrop-blur-md sm:block">
+                                    <p className="font-serif text-lg leading-tight">
+                                        Cuidado começa com escuta.
+                                    </p>
+
+                                    <p className="mt-2 text-xs leading-5 text-(--muted)">
+                                        Uma experiência pensada para compreender você
+                                        antes de qualquer decisão.
+                                    </p>
+                                </div>
+                            </Reveal>
                         </div>
-
-                        <div className="absolute -bottom-6 -left-5 hidden max-w-60 rounded-lg border border-white/60 bg-white/80 p-5 shadow-(--shadow-soft) backdrop-blur-md sm:block">
-                            <p className="font-serif text-lg leading-tight">
-                                Cuidado começa com escuta.
-                            </p>
-
-                            <p className="mt-2 text-xs leading-5 text-(--muted)">
-                                Uma experiência pensada para compreender você
-                                antes de qualquer decisão.
-                            </p>
-                        </div>
-                    </div>
+                    </Reveal>
                 </div>
             </Container>
         </section>
