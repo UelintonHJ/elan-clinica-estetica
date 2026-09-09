@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { MotionProvider } from "@/components/ui/MotionProvider";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -31,7 +32,10 @@ export default function RootLayout({ children, }: Readonly<{
     <html
       lang="pt-BR"
     >
-      <body className={`${inter.variable} ${playfair.variable} antialiased`}>{children}</body>
+      <body className={`${inter.variable} ${playfair.variable} antialiased`}
+      >
+        <MotionProvider>{children}</MotionProvider>
+      </body>
     </html>
   );
 }
