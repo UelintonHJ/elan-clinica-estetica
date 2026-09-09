@@ -27,13 +27,13 @@ export function Hero() {
                             Cuidado estético com elegância
                         </span>
 
-                        <Reveal delay={0.12} distance={18} duration={0.9}>
+                        <Reveal trigger="mount" delay={0.1} distance={14} duration={1}>
                             <h1 className="max-w-2xl font-serif text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.96] tracking-[-0.035em]">
                                 Realce sua beleza com cuidado, precisão e naturalidade.
                             </h1>
                         </Reveal>
 
-                        <Reveal delay={0.22} distance={14} duration={0.8}>
+                        <Reveal trigger="mount" delay={0.42} distance={12} duration={0.9}>
                             <p className="mt-7 max-w-lg text-base leading-7 text-(--muted) sm:text-lg sm:leading-8">
                                 Tratamentos estéticos personalizados para quem busca
                                 cuidar da aparência com uma abordagem individualizada
@@ -41,7 +41,7 @@ export function Hero() {
                             </p>
                         </Reveal>
 
-                        <Reveal delay={0.32} distance={12} duration={0.72}>
+                        <Reveal trigger="mount" delay={0.72} distance={10} duration={0.85}>
                             <p className="mt-4 max-w-lg text-sm leading-6 text-(--muted-light)">
                                 Cada pessoa tem necessidades, características e
                                 objetivos diferentes. Por isso, o primeiro passo é
@@ -50,7 +50,7 @@ export function Hero() {
                             </p>
                         </Reveal>
 
-                        <Reveal delay={0.4} distance={10} duration={0.62}>
+                        <Reveal trigger="mount" delay={1} distance={8} duration={0.75}>
                             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
                                 <Button
                                     href={whatsappUrl}
@@ -70,7 +70,7 @@ export function Hero() {
                             </div>
                         </Reveal>
 
-                        <Reveal delay={0.48} distance={8} duration={0.58}>
+                        <Reveal trigger="mount" delay={1.2} distance={6} duration={0.7}>
                             <div className="mt-7 flex items-center gap-3 text-xs text-(--muted-light)">
                                 <span className="h-px w-8 bg-(--border-strong)" />
                                 Atendimento personalizado · Porto Alegre
@@ -78,12 +78,13 @@ export function Hero() {
                         </Reveal>
                     </div>
 
-                    <Reveal
-                        delay={0.18}
-                        distance={24}
-                        duration={1}
-                    >
-                        <div className="relative">
+                    <div className="relative">
+                        <Reveal
+                            trigger="mount"
+                            delay={1.3}
+                            distance={18}
+                            duration={1.05}
+                        >
                             <div className="group relative aspect-4/5 overflow-hidden rounded-xl shadow-(--shadow-image)">
                                 <Image
                                     src="/images/hero-clinic.jpg"
@@ -96,27 +97,29 @@ export function Hero() {
 
                                 <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-black/10 via-transparent to-transparent" />
                             </div>
+                        </Reveal>
 
-                            <Reveal
-                                delay={0.55}
-                                distance={8}
-                                duration={0.65}
-                            >
-                                <div className="absolute -bottom-6 -left-5 hidden max-w-60 rounded-lg border border-white/60 bg-white/80 p-5 shadow-(--shadow-soft) backdrop-blur-md sm:block">
-                                    <p className="font-serif text-lg leading-tight">
-                                        Cuidado começa com escuta.
-                                    </p>
+                        <Reveal
+                            trigger="mount"
+                            delay={2.2}
+                            distance={8}
+                            duration={0.75}
+                            fade={false}
+                        >
+                            <div className="absolute -bottom-6 -left-5 hidden max-w-60 rounded-lg border border-white/60 bg-white/80 p-5 shadow-(--shadow-soft) backdrop-blur-md sm:block">
+                                <p className="font-serif text-lg leading-tight">
+                                    Cuidado começa com escuta.
+                                </p>
 
-                                    <p className="mt-2 text-xs leading-5 text-(--muted)">
-                                        Uma experiência pensada para compreender você
-                                        antes de qualquer decisão.
-                                    </p>
-                                </div>
-                            </Reveal>
-                        </div>
-                    </Reveal>
+                                <p className="mt-2 text-xs leading-5 text-(--muted)">
+                                    Uma experiência pensada para compreender você
+                                    antes de qualquer decisão.
+                                </p>
+                            </div>
+                        </Reveal>
+                    </div>
                 </div>
             </Container>
-        </section>
+        </section >
     );
 }

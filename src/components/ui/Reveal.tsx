@@ -9,29 +9,32 @@ interface RevealProps {
     duration?: number;
     distance?: number;
     className?: string;
+    trigger?: "view" | "mount";
+    fade?: boolean;
 }
 
 export function Reveal({
     children,
     delay = 0,
-    duration = 0.75,
-    distance = 18,
+    duration = 0.8,
+    distance = 20,
     className,
+    trigger = "view",
+    fade = true,
 }: RevealProps) {
     const shouldReduceMotion = useReducedMotion();
 
     const initial = shouldReduceMotion
-        ? {
-            opacity: 0,
-            y: 0,
-        }
+        ? false
         : {
-            opacity: 0,
+            opacity: fade ? 0 : 1,
+            visibility: fade ? "visible" : "hidden",
             y: distance,
         };
 
     const animate = {
         opacity: 1,
+        visibility: "visible",
         y: 0,
     };
 
@@ -45,6 +48,19 @@ export function Reveal({
             delay,
             ease: [0.22, 1, 0.36, 1] as const,
         };
+
+    if (trigger === "mount") {
+        return (
+            <motion.div
+                initial={initial}
+                animate={animate}
+                transition={transition}
+                className={className}
+            >
+                {children}
+            </motion.div>
+        )
+    }
 
     return (
         <motion.div
