@@ -1,10 +1,12 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
+
 import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Button } from "../ui/Button";
 import { Reveal } from "../ui/Reveal";
+
 import { createWhatsAppUrl } from "@/lib/whatsapp";
 
 const steps = [
@@ -35,6 +37,8 @@ const steps = [
 ];
 
 export function Process() {
+    const shouldReduceMotion = useReducedMotion();
+
     const whatsappUrl = createWhatsAppUrl(
         "Olá! Gostaria de entender como funciona o atendimento."
     );
@@ -60,10 +64,16 @@ export function Process() {
                             once: true,
                             amount: 0.35,
                         }}
-                        transition={{
-                            duration: 1.1,
-                            ease: [0.22, 1, 0.36, 1],
-                        }}
+                        transition={
+                            shouldReduceMotion
+                                ? {
+                                    duration: 0,
+                                }
+                                : {
+                                    duration: 1.3,
+                                    ease: [0.22, 1, 0.36, 1],
+                                }
+                        }
                     />
 
                     <div className="grid gap-10 lg:grid-cols-4">
@@ -71,15 +81,23 @@ export function Process() {
                             <Reveal
                                 key={step.number}
                                 delay={0.12 + index * 0.1}
-                                distance={18}
+                                distance={12}
+                                duration={0.78}
                             >
                                 <article className="relative">
                                     <motion.div
                                         className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-(--background) text-xs font-medium"
-                                        initial={{
-                                            opacity: 0,
-                                            scale: 0.8,
-                                        }}
+                                        initial={
+                                            shouldReduceMotion
+                                                ? {
+                                                    opacity: 0,
+                                                    scale: 1,
+                                                }
+                                                : {
+                                                    opacity: 0,
+                                                    scale: 0.94,
+                                                }
+                                        }
                                         whileInView={{
                                             opacity: 1,
                                             scale: 1,
@@ -88,11 +106,17 @@ export function Process() {
                                             once: true,
                                             amount: 0.35,
                                         }}
-                                        transition={{
-                                            duration: 0.5,
-                                            delay: 0.18 + index * 0.1,
-                                            ease: [0.22, 1, 0.36, 1],
-                                        }}
+                                        transition={
+                                            shouldReduceMotion
+                                                ? {
+                                                    duration: 0,
+                                                }
+                                                : {
+                                                    duration: 0.75,
+                                                    delay: 0.2 + index * 0.1,
+                                                    ease: [0.22, 1, 0.36, 1],
+                                                }
+                                        }
                                     >
                                         {step.number}
                                     </motion.div>

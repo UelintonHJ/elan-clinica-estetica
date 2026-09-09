@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Plus } from "lucide-react";
 import { useState } from "react";
 
@@ -43,6 +43,7 @@ const faqs = [
 
 export function FAQ() {
     const [active, setActive] = useState<number | null>(null);
+    const shouldReduceMotion = useReducedMotion();
 
     return (
         <section id="faq" className="py-28 sm:py-36">
@@ -65,7 +66,8 @@ export function FAQ() {
                                 <Reveal
                                     key={faq.question}
                                     delay={index * 0.04}
-                                    distance={12}
+                                    distance={10}
+                                    duration={0.7}
                                 >
                                     <div className="border-b border-black/10">
                                         <button
@@ -75,7 +77,7 @@ export function FAQ() {
                                             onClick={() =>
                                                 setActive(isOpen ? null : index)
                                             }
-                                            className="group flex w-full items-center justify-between gap-6 py-6 text-left focus-visible:outline-none focus-visible:ring-(--foreground) focus-visible:ring-offset-4"
+                                            className="group flex w-full items-center justify-between gap-6 py-6 text-left transition-colors duration-200 focus-visible:bg-black/[2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--foreground) focus-visible:ring-offset-4 focus-visible:ring-offset-(--background) motion-reduce:trasition-none"
                                         >
                                             <span className="text-sm font-medium sm:text-base">
                                                 {faq.question}
@@ -85,10 +87,16 @@ export function FAQ() {
                                                 animate={{
                                                     rotate: isOpen ? 45 : 0,
                                                 }}
-                                                transition={{
-                                                    duration: 0.3,
-                                                    ease: [0.22, 1, 0.36, 1],
-                                                }}
+                                                transition={
+                                                    shouldReduceMotion
+                                                        ? {
+                                                            duration: 0,
+                                                        }
+                                                        : {
+                                                            duration: 0.3,
+                                                            ease: [0.22, 1, 0.36, 1],
+                                                        }
+                                                }
                                                 className="flex shrink-0"
                                                 aria-hidden="true"
                                             >
@@ -113,20 +121,27 @@ export function FAQ() {
                                                         height: 0,
                                                         opacity: 0,
                                                     }}
-                                                    transition={{
-                                                        height: {
-                                                            duration: 0.35,
-                                                            ease: [
-                                                                0.22,
-                                                                1,
-                                                                0.36,
-                                                                1,
-                                                            ],
-                                                        },
-                                                        opacity: {
-                                                            duration: 0.2,
-                                                        },
-                                                    }}
+                                                    transition={
+                                                        shouldReduceMotion
+                                                            ? {
+                                                                duration: 0,
+                                                            }
+                                                            : {
+                                                                height: {
+                                                                    duration: 0.42,
+                                                                    ease: [
+                                                                        0.22,
+                                                                        1,
+                                                                        0.36,
+                                                                        1,
+                                                                    ],
+                                                                },
+                                                                opacity: {
+                                                                    duration: 0.28,
+                                                                    ease: "easeOut",
+                                                                },
+                                                            }
+                                                    }
                                                     className="overflow-hidden"
                                                 >
                                                     <p className="pb-6 pr-10 text-sm leading-6 text-black/55">
@@ -142,6 +157,6 @@ export function FAQ() {
                     </div>
                 </div>
             </Container>
-        </section>
+        </section >
     );
 }
