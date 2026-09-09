@@ -1,10 +1,12 @@
 "use client";
 
+import { AnimatePresence, motion } from "motion/react";
 import { Plus } from "lucide-react";
 import { useState } from "react";
 
 import { Container } from "../ui/Container";
 import { SectionHeading } from "../ui/SectionHeading";
+import { Reveal } from "../ui/Reveal";
 
 const faqs = [
     {
@@ -29,12 +31,12 @@ const faqs = [
     },
     {
         question: "Qual é o valor?",
-        answer: 
+        answer:
             "Explique aqui a política real de preços, avaliação e orçamento.",
     },
     {
         question: "Como posso agendar?",
-        answer: 
+        answer:
             "Você pode entrar em contato pelo WhatsApp e seguir o processo real de agendamento.",
     },
 ];
@@ -46,55 +48,95 @@ export function FAQ() {
         <section id="faq" className="py-28 sm:py-36">
             <Container>
                 <div className="grid gap-14 lg:grid-cols-[0.7fr_1.3fr]">
-                    <SectionHeading 
-                        eyebrow="Dúvidas"
-                        title="Antes de conversar, algumas respostas."
-                        description="Informações claras ajudam você a decidir com mais tranquilidade."
-                    />
+                    <Reveal>
+                        <SectionHeading
+                            eyebrow="Dúvidas"
+                            title="Antes de conversar, algumas respostas."
+                            description="Informações claras ajudam você a decidir com mais tranquilidade."
+                        />
+                    </Reveal>
 
                     <div className="border-t border-black/10">
                         {faqs.map((faq, index) => {
                             const isOpen = active === index;
+                            const answerId = `faq-answer-${index}`;
 
                             return (
-                                <div
+                                <Reveal
                                     key={faq.question}
-                                    className="border-b border-black/10"
+                                    delay={index * 0.04}
+                                    distance={12}
                                 >
-                                    <button
-                                        type="button"
-                                        aria-expanded={isOpen}
-                                        onClick={() => 
-                                            setActive(isOpen ? null : index)
-                                        }
-                                        className="flex w-full items-center justify-between gap-6 py-6 text-left "
-                                    >
-                                        <span className="text-sm font-medium sm:text-base">
-                                            {faq.question}
-                                        </span>
+                                    <div className="border-b border-black/10">
+                                        <button
+                                            type="button"
+                                            aria-expanded={isOpen}
+                                            aria-controls={answerId}
+                                            onClick={() =>
+                                                setActive(isOpen ? null : index)
+                                            }
+                                            className="group flex w-full items-center justify-between gap-6 py-6 text-left focus-visible:outline-none focus-visible:ring-(--foreground) focus-visible:ring-offset-4"
+                                        >
+                                            <span className="text-sm font-medium sm:text-base">
+                                                {faq.question}
+                                            </span>
 
-                                        <Plus 
-                                            size={20}
-                                            className={`shrink-0 transition-transform duration-300 ${
-                                                isOpen ? "rotate-45" : ""
-                                            }`}
-                                        />
-                                    </button>
+                                            <motion.span
+                                                animate={{
+                                                    rotate: isOpen ? 45 : 0,
+                                                }}
+                                                transition={{
+                                                    duration: 0.3,
+                                                    ease: [0.22, 1, 0.36, 1],
+                                                }}
+                                                className="flex shrink-0"
+                                                aria-hidden="true"
+                                            >
+                                                <Plus size={20} />
+                                            </motion.span>
+                                        </button>
 
-                                    <div
-                                        className={`grid transition-[grid-template-rows] duration-300 ${
-                                            isOpen
-                                                ? "grid-rows-[1fr]"
-                                                : "grid-rows-[0fr]"
-                                        }`}
-                                    >
-                                        <div className="overflow-hidden">
-                                            <p className="pb-6 pr-10 text-sm leading-6 text-black/55">
-                                                {faq.answer}
-                                            </p>
-                                        </div>
+                                        <AnimatePresence initial={false}>
+                                            {isOpen && (
+                                                <motion.div
+                                                    id={answerId}
+                                                    key={answerId}
+                                                    initial={{
+                                                        height: 0,
+                                                        opacity: 0,
+                                                    }}
+                                                    animate={{
+                                                        height: "auto",
+                                                        opacity: 1,
+                                                    }}
+                                                    exit={{
+                                                        height: 0,
+                                                        opacity: 0,
+                                                    }}
+                                                    transition={{
+                                                        height: {
+                                                            duration: 0.35,
+                                                            ease: [
+                                                                0.22,
+                                                                1,
+                                                                0.36,
+                                                                1,
+                                                            ],
+                                                        },
+                                                        opacity: {
+                                                            duration: 0.2,
+                                                        },
+                                                    }}
+                                                    className="overflow-hidden"
+                                                >
+                                                    <p className="pb-6 pr-10 text-sm leading-6 text-black/55">
+                                                        {faq.answer}
+                                                    </p>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
                                     </div>
-                                </div>
+                                </Reveal>
                             );
                         })}
                     </div>

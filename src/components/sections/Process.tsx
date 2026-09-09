@@ -73,7 +73,7 @@ export function Process() {
                                 delay={0.12 + index * 0.1}
                                 distance={18}
                             >
-                                <article key={step.number} className="relative">
+                                <article className="relative">
                                     <motion.div
                                         className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-(--background) text-xs font-medium"
                                         initial={{
