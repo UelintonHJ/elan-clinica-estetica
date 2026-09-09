@@ -11,6 +11,8 @@ import { Offer } from "@/components/sections/Offer";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
+import { Reveal } from "@/components/ui/Reveal";
+
 export default function Home() {
   return (
     <>
@@ -18,14 +20,38 @@ export default function Home() {
 
       <main>
         <Hero />
-        <Problem />
-        <Benefits />
-        <Process />
-        <Differentials />
-        <Testimonials />
-        <Offer />
-        <FAQ />
-        <FinalCTA />
+
+        <Reveal>
+          <Problem />
+        </Reveal>
+
+        <Reveal delay={0.04}>
+          <Benefits />
+        </Reveal>
+
+        <Reveal delay={0.04}>
+          <Process />
+        </Reveal>
+
+        <Reveal delay={0.04}>
+          <Differentials />
+        </Reveal>
+
+        <Reveal delay={0.04}>
+          <Testimonials />
+        </Reveal>
+
+        <Reveal delay={0.04}>
+          <Offer />
+        </Reveal>
+
+        <Reveal delay={0.04}>
+          <FAQ />
+        </Reveal>
+
+        <Reveal delay={0.04}>
+          <FinalCTA />
+        </Reveal>
       </main>
 
       <Footer />
